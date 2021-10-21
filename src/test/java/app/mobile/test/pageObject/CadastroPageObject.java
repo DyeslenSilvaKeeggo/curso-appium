@@ -2,10 +2,8 @@ package app.mobile.test.pageObject;
 
 import org.openqa.selenium.WebElement;
 
-import app.mobile.test.AppiumDriverConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-
 
 public class CadastroPageObject {
 	
@@ -33,9 +31,10 @@ public class CadastroPageObject {
 		campoConfirmaSenha.setValue(confirmacao);
 	}
 	
-	public void cadastrar(String usuario, String senha, String confirmacao) {
+	public LoginPageObject cadastrar(String usuario, String senha, String confirmacao) {
 		preencherFormulario(usuario, senha, confirmacao);
 		botaoCadastrar.click();
+		return new LoginPageObject(appiumDriver);
 	}
 	
 	public String mensagemErro() {
