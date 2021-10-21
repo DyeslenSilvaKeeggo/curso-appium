@@ -1,11 +1,15 @@
 package app.mobile.test.pageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.functions.ExpectedCondition;
 
-public class CadastroPageObject {
+public class CadastroPageObject extends PageObject{
 	
 	//private AppiumDriverConfig appiumDriverConfig;
 	private MobileElement campoNome;
@@ -13,11 +17,12 @@ public class CadastroPageObject {
 	private MobileElement campoConfirmaSenha;
 	private MobileElement botaoCadastrar;
 	private MobileElement mensagemErro;
-	private AppiumDriver<WebElement>  appiumDriver;
+	//private AppiumDriver<WebElement>  appiumDriver;
 
 	public CadastroPageObject(AppiumDriver<WebElement> appiumDriver) {
-		this.appiumDriver = appiumDriver;
+		super(appiumDriver);
 	}
+	@Override
 	public void buscarElementos() {
 		campoNome = (MobileElement) appiumDriver.findElementById("");
 		campoSenha = (MobileElement) appiumDriver.findElementById("");
@@ -38,6 +43,8 @@ public class CadastroPageObject {
 	}
 	
 	public String mensagemErro() {
+		WebDriverWait driverWait = new WebDriverWait(appiumDriver,4);
+		driverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("")));
 		mensagemErro = (MobileElement) appiumDriver.findElementById("");
 		return mensagemErro.getText();
 	}
